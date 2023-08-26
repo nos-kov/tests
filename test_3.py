@@ -1,3 +1,5 @@
+import pytest
+
 courses = [
   "Java-разработчик с нуля", "Fullstack-разработчик на Python",
   "Python-разработчик с нуля", "Frontend-разработчик с нуля"
@@ -75,14 +77,29 @@ for id in maxes:
 print(f'Самый короткий курс(ы): {", ".join(courses_min)} - {min} месяца(ев)')
 print(f'Самый длинный курс(ы): {", ".join(courses_max)} - {max} месяца(ев)')
 
+
 def test_value(list):
 
     assert list, "list is empty"
     assert len(list) < 2 , "list is longer than 1"
 
 
-if __name__ == "__main__":
+@pytest.mark.parametrize(
+    'mytext',
 
+    [   
+        ("Python-разработчик с нуля - 12 месяца(ев)"),
+        ("hello world"),
+        (", ".join(courses_min)),
+        (", ".join(courses_max))
+    ]
+
+)
+def test_result_iscorrect(mytext):
+
+    assert (mytext == "Python-разработчик с нуля - 12 месяца(ев)"), "value is not correct"
+
+
+if __name__ == "__main__":
     test_value(courses_min)
     test_value(courses_max)
-    

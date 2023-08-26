@@ -82,19 +82,18 @@ for id, _ in enumerate(names_codes):
         print(codes_info[id])
         print(f"Коду {id} соответствуют: {', '.join(sorted(names_codes[id])).strip()}")
 
-
-def test_inrange(code):
     
+def test_inrange(code):
     assert (code in range(0,9))==True, 'the code is out of range'
 
+
 def test_notempty(names_codes):
-    
     assert (names_codes), 'the list is empty'
 
 
 def test_unique(list):
-
     assert list == set(list), 'the list contains duplicates'
+
 
 if __name__ == '__main__':
 
